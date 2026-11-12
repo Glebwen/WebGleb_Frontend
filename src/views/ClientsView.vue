@@ -89,7 +89,7 @@ const newClient = ref({ name: '', phone: '' });
 async function fetchClients() {
   loading.value = true;
   try {
-    const { data } = await api.get('/api/clients/');
+    const { data } = await api.get('/api/core/clients/');
     clients.value = data;
   } catch (e) {
     console.error('Ошибка загрузки', e);
@@ -101,7 +101,7 @@ async function fetchClients() {
 async function addClient() {
   isAdding.value = true;
   try {
-    await api.post('/api/clients/', newClient.value);
+    await api.post('/api/core/clients/', newClient.value);
     newClient.value = { name: '', phone: '' }; 
     await fetchClients(); 
   } catch (e) {
@@ -114,7 +114,7 @@ async function addClient() {
 async function deleteClient(id) {
   if (!confirm('Вы уверены, что хотите удалить этого клиента?')) return;
   try {
-    await api.delete(`/api/clients/${id}/`);
+    await api.delete(`/api/core/clients/${id}/`);
     await fetchClients();
   } catch (e) {
     alert('Ошибка при удалении');
