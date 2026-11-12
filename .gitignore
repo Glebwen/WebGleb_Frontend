@@ -1,0 +1,29 @@
+# Логи
+logs
+*.log
+npm-debug.log*
+
+# Зависимости
+node_modules
+
+# Сборка
+dist
+dist-ssr
+
+# Редакторы и ОС
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Локальные файлы
+*.local
+
+# Тесты
+/cypress/videos/
+/cypress/screenshots/
