@@ -67,11 +67,10 @@ const isAdding = ref(false);
 const newOrder = ref({ client: '', bearing: '', quantity: 1 });
 
 async function fetchData() {
-  // Загружаем всё параллельно
   const [resOrders, resClients, resBearings] = await Promise.all([
-    api.get('/api/orders/'),
-    api.get('/api/clients/'),
-    api.get('/api/bearings/')
+    api.get('/api/core/orders/'),
+    api.get('/api/core/clients/'),
+    api.get('/api/core/bearings/')
   ]);
   orders.value = resOrders.data;
   clients.value = resClients.data;
@@ -81,7 +80,7 @@ async function fetchData() {
 async function addOrder() {
   isAdding.value = true;
   try {
-    await api.post('/api/orders/', newOrder.value);
+    await api.post('/api/core/orders/', newOrder.value);
     newOrder.value = { client: '', bearing: '', quantity: 1 };
     await fetchData();
   } catch (e) {

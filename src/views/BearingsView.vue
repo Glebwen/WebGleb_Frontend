@@ -58,14 +58,14 @@ const isAdding = ref(false);
 const newBearing = ref({ name: '', price: 0, amount: 0 });
 
 async function fetchBearings() {
-  const { data } = await api.get('/api/bearings/');
+  const { data } = await api.get('/api/core/bearings/');
   bearings.value = data;
 }
 
 async function addBearing() {
   isAdding.value = true;
   try {
-    await api.post('/api/bearings/', newBearing.value);
+    await api.post('/api/core/bearings/', newBearing.value);
     newBearing.value = { name: '', price: 0, amount: 0 };
     await fetchBearings();
   } catch (e) {
